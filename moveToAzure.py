@@ -1,10 +1,8 @@
 from azure.storage.blob import BlockBlobService
-import time  
 from watchdog.observers import Observer  
 from watchdog.events import FileSystemEventHandler
 from os import listdir
 from os.path import isfile, join
-import sys
 import glob
 import os
 
@@ -15,7 +13,7 @@ def getFilesInDirectory(path_to_directory):
     print (list)
     return list
 
-    #returns uploaded_files. (~files_uploaded) UNION files_in_directory
+#returns uploaded_files. (~files_uploaded) UNION files_in_directory
 def uploadFilesNotUploaded(files_in_directory,files_uploaded,path_to_directory):
     for file in files_in_directory:
         if file not in files_uploaded:
@@ -24,6 +22,7 @@ def uploadFilesNotUploaded(files_in_directory,files_uploaded,path_to_directory):
             files_uploaded.append(file)
     return files_uploaded
 
+#saves the image to the specified container    
 def save_image_to_azure(local_file_name,full_path_to_file):
     # Create the BlockBlobService object, which points to the Blob service in your storage account
     block_blob_service = BlockBlobService(account_name='gencharacters', account_key='xxx')
@@ -37,12 +36,8 @@ def save_image_to_azure(local_file_name,full_path_to_file):
 
 
 
-
-
-#argument [1] passed is taking the path to the file directory.    
+ 
 if __name__ == '__main__':
-    #w = Watcher()
-    #w.run()
 
     directory_path = local_path=os.path.abspath(os.path.curdir)
     uploaded_files = []
