@@ -26,7 +26,7 @@ def uploadFilesNotUploaded(files_in_directory,files_uploaded,path_to_directory):
 
 def save_image_to_azure(local_file_name,full_path_to_file):
     # Create the BlockBlobService object, which points to the Blob service in your storage account
-    block_blob_service = BlockBlobService(account_name='gencharacters', account_key='uYSYgQmYY9bZD/YISsxLM9l2fyTxsMrwR8B5R/tnf/USS9b9nf7mDZlftXE+Q/988hpJqrEML0INFJXsbeCHrg==')
+    block_blob_service = BlockBlobService(account_name='gencharacters', account_key='xxx')
     block_blob_service.create_blob_from_path('generatedcharacters', local_file_name, full_path_to_file + '\\'+local_file_name)
         
     # get_blob_to_text
